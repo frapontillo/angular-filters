@@ -17,9 +17,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     options: {
       configFile: 'testacular.conf.js',
-      browsers: ['Chrome']
-    },
-    continuous: {
+      browsers: ['Chrome'],
       singleRun: true
     },
     dev: {
@@ -31,7 +29,12 @@ module.exports = function(grunt) {
         runnerPort: 9999,
         browsers: ['Chrome']
       },
-      continuous: {
+      travis: {
+        browsers: ['Firefox'],
+        singleRun: true
+      },
+      single: {
+        browsers: ['Chrome'],
         singleRun: true
       },
       dev: {
@@ -76,5 +79,6 @@ module.exports = function(grunt) {
     grunt.task.run(['concat', 'uglify']);
   });
 
-  grunt.registerTask('default', ['testacular:continuous', 'build']);
+  grunt.registerTask('travis', ['testacular:travis', 'build']);
+  grunt.registerTask('default', ['testacular:single', 'build']);
 };

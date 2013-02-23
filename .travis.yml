@@ -7,4 +7,4 @@
   - sh -e /etc/init.d/xvfb start
   - npm install -g grunt-cli@0.1.x testacular@0.6.x
 
- script: "grunt"
+ script: "grunt travis"
