@@ -4,7 +4,7 @@
 
 A collection of useful filters for angularjs.
 
-[![Build Status](https://secure.travis-ci.org/frapontillo/angular-filters.png)](http://travis-ci.org//frapontillo/angular-filters)
+[![Build Status](https://secure.travis-ci.org/frapontillo/angular-filters.png)](http://travis-ci.org/frapontillo/angular-filters)
 
 **TODO**: Write a complete description
 

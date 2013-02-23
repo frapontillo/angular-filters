@@ -21,7 +21,6 @@
     "node": ">= 0.8.11"
   },
   "dependencies": {
-    "angular": "~1.0.5"
   },
   "devDependencies": {
     "testacular": "~0.6.0",
