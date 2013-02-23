@@ -44,20 +44,23 @@ module.exports = function(grunt) {
     builddir: 'build',
     meta: {
       banner: '/**\n' + ' * <%= pkg.description %>\n' +
-        ' * @version v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+        ' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+        ' * @author <%= pkg.author.name %>\n' +
         ' * @link <%= pkg.homepage %>\n' +
-        ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' + ' */'
+        ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' + ' */\n\n'
     },
     concat: {
+      options: {
+        banner: '<%= meta.banner %>'
+      },
       build: {
-        src: ['<banner:meta.banner>', 'common/*.js', 'modules/*/*/*.js'],
+        src: ['common/*.js', 'modules/*/*/*.js'],
         dest: '<%= builddir %>/<%= pkg.name %>.js'
       }
     },
     uglify: {
       build: {
-        src: ['<banner:meta.banner>', '<%= builddir %>/<%= pkg.name %>.js'],
+        src: ['<%= builddir %>/<%= pkg.name %>.js'],
         dest: '<%= builddir %>/<%= pkg.name %>.min.js'
       }
     }
