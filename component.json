@@ -10,6 +10,6 @@
   },
   "main": "./build/angular-filters.min.js",
   "dependencies": {
-    "angular": ">= 1.0.5"
+    "angular": ">= 1.0.4"
   }
 }
