@@ -109,18 +109,18 @@ Use it as follows:
 
 # History
 
+## v0.0.2
+
+- Added `firstNotNull`, `lastNotNull`, `max`, `min`.
+- Test set complete.
+- TravisCI is working.
+
 ## v0.0.1
 
 - First release.
 - `default` filter is the only filter at the moment.
 - Unit testing with grunt, testacular and gruntacular configured.
 - `defaultSpec` test written.
-
-## v0.0.2
-
-- Added `firstNotNull`, `lastNotNull`, `max`, `min`.
-- Test set complete.
-- TravisCI is working.
 
 # License
 
