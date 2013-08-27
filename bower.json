@@ -2,7 +2,7 @@
   "author": "Francesco Pontillo",
   "name": "angular-filters",
   "description": "A collection of filters for AngularJS.",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "homepage": "https://github.com/frapontillo/angular-filters",
   "repository": {
     "type": "git",
