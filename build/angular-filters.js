@@ -8,7 +8,6 @@
 
 angular.module('frapontillo.ex.filters', []);
 angular.module('frapontillo', ['ex.filters']);
-angular.module('frapontillo', ['ex.more']);
 angular.module('frapontillo.ex.filters')
   .filter('bool', function() {
     return function(input, valueTrue, valueFalse) {
