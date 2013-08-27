@@ -6,9 +6,18 @@
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 
-angular.module('ex.filters', []);
-angular.module('ex', ['ex.filters']);
-angular.module('ex.filters')
+angular.module('frapontillo.ex.filters', []);
+angular.module('frapontillo', ['ex.filters']);
+angular.module('frapontillo', ['ex.more']);
+angular.module('frapontillo.ex.filters')
+  .filter('bool', function() {
+    return function(input, valueTrue, valueFalse) {
+      return out =
+        input !== true ? valueFalse : valueTrue;
+    }
+  }
+);
+angular.module('frapontillo.ex.filters')
   .filter('default', function() {
     return function(input, value) {
       return out =
@@ -17,7 +26,7 @@ angular.module('ex.filters')
     }
   }
 );
-angular.module('ex.filters')
+angular.module('frapontillo.ex.filters')
   .filter('firstNotNull', function() {
     return function(input) {
       var out = undefined;
@@ -31,7 +40,7 @@ angular.module('ex.filters')
     }
   }
 );
-angular.module('ex.filters')
+angular.module('frapontillo.ex.filters')
   .filter('lastNotNull', function() {
     return function(input) {
       var out = undefined;
@@ -45,7 +54,7 @@ angular.module('ex.filters')
     }
   }
 );
-angular.module('ex.filters')
+angular.module('frapontillo.ex.filters')
   .filter('max', function() {
     return function(input) {
       var out = undefined;
@@ -57,7 +66,7 @@ angular.module('ex.filters')
     }
   }
 );
-angular.module('ex.filters')
+angular.module('frapontillo.ex.filters')
   .filter('min', function() {
     return function(input) {
       var out = undefined;

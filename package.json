@@ -10,11 +10,19 @@
     "type": "git",
     "url": "git://github.com/frapontillo/angular-filters.git"
   },
+  "author": {
+    "name" : "Francesco Pontillo",
+    "email" : "francescopontillo@gmail.com",
+    "url" : "https://github.com/frapontillo"
+  },
   "keywords": [
     "angularjs",
     "angular",
     "filter"
   ],
+  "bugs": {
+    "url" : "https://github.com/frapontillo/angular-filters/issues"
+  },
   "license": "MIT",
   "readmeFilename": "README.md",
   "engines": {

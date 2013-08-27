@@ -2,7 +2,7 @@ describe('default', function () {
   var defaultFilter;
   var numberFilter;
 
-  beforeEach(module('ex.filters'));
+  beforeEach(module('frapontillo.ex.filters'));
   beforeEach(inject(function ($filter) {
     defaultFilter = $filter('default');
     numberFilter = $filter('number');

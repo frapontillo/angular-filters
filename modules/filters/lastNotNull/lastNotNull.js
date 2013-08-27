@@ -1,4 +1,4 @@
-angular.module('ex.filters')
+angular.module('frapontillo.ex.filters')
   .filter('lastNotNull', function() {
     return function(input) {
       var out = undefined;

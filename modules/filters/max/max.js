@@ -1,4 +1,4 @@
-angular.module('ex.filters')
+angular.module('frapontillo.ex.filters')
   .filter('max', function() {
     return function(input) {
       var out = undefined;

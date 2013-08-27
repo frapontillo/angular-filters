@@ -1,6 +1,6 @@
 #angular-filters [![Build Status](https://travis-ci.org/frapontillo/angular-filters.png?branch=master)](https://travis-ci.org/frapontillo/angular-filters)
 
-A collection of useful filters for angularjs.
+A collection of useful filters for [AngularJS](http://angularjs.org/).
 
 ***
 
@@ -8,6 +8,7 @@ A collection of useful filters for angularjs.
 
 The included filters are:
 
+- [`bool:trueValue:falseValue`](#bool)
 - [`default:defaultValue`](#default)
 - [`firstNotNull`](#firstnotnull)
 - [`lastNotNull`](#lastnotnull)
@@ -24,9 +25,25 @@ $ bower install angular-filters
 
 You can also fetch the git repo or download a zip of the latest tag.
 
-Then, simply include `./build/angular-filters.js` or `./build/angular-filters.min.js` in your Web app.
+Then, simply include `./build/angular-filters.js` or `./build/angular-filters.min.js` in your Web app and inject the module `frapontillo.ex.filters` in your application.
 
 # Filters specs
+
+## bool
+
+The `bool` filter allows to **specify true and false values** to show depending on the input value. The second parameter will be returned if and only if the first parameter is `true`; the third parameter will be returned if and only if the first parameter is `false`.
+
+This filter can be used to print a specific message depending on a boolean value.
+
+Use it as follows:
+
+```html
+	<p>{{ someBoolValue | bool:'Candies!':'No candies :(' }}</p>
+```
+
+```javascript
+	$scope.returnValue = $filter('bool')($scope.someBoolValue, 'Candies!', 'No candies :(');
+```
 
 ## default
 
@@ -47,7 +64,7 @@ Use it as follows:
 ```
 
 ```javascript
-	$scope.someValue = $filter('default')
+	$scope.returnValue = $filter('default')
 		($filter('number')($scope.someValue, 2), 'No value is available.');
 ```
 
@@ -108,6 +125,12 @@ Use it as follows:
 ```
 
 # History
+
+## v1.0.0
+
+- Main module renamed to `frapontillo.ex.filters` in order to adhere with the [Angular Component Specification draft](https://github.com/PascalPrecht/angular-component-spec).
+- Added `bool` filter.
+- Upgraded bower information, node packages and Karma test runner.
 
 ## v0.0.2
 

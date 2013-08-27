@@ -1,7 +1,7 @@
 describe('max', function () {
   var maxFilter;
 
-  beforeEach(module('ex.filters'));
+  beforeEach(module('frapontillo.ex.filters'));
   beforeEach(inject(function ($filter) {
     maxFilter = $filter('max');
   }));
