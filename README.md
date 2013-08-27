@@ -122,6 +122,21 @@ Use it as follows:
 - Unit testing with grunt, testacular and gruntacular configured.
 - `defaultSpec` test written.
 
+# How to test and build
+
+To test and build the distribution files yourself, do the following:
+
+```shell
+npm install -g grunt-cli karma bower
+npm install
+bower install
+grunt
+```
+
+To simply test, use the `karma:local` task. To build without testing first, use the `build` task.
+
+If you want to test after every file change, use the `karma:dev` grunt task instead.
+
 # License
 
 ```

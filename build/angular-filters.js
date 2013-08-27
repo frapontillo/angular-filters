@@ -1,6 +1,6 @@
 /**
  * A collection of filters for AngularJS.
- * @version v0.0.2 - 2013-02-23
+ * @version v0.0.2 - 2013-08-27
  * @author Francesco Pontillo
  * @link https://github.com/frapontillo/angular-filters
  * @license MIT License, http://www.opensource.org/licenses/MIT
