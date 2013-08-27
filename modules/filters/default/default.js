@@ -1,4 +1,4 @@
-angular.module('ex.filters')
+angular.module('frapontillo.ex.filters')
   .filter('default', function() {
     return function(input, value) {
       return out =

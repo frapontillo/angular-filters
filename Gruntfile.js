@@ -9,36 +9,28 @@
 'use strict';
 
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('gruntacular');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    options: {
-      configFile: 'testacular.conf.js',
-      browsers: ['Chrome'],
-      singleRun: true
-    },
     dev: {
       reporters: 'dots'
     },
-    testacular : {
+    karma : {
       options: {
-        configFile: 'testacular.conf.js',
-        runnerPort: 9999,
-        browsers: ['Chrome']
+        configFile: 'karma.conf.js',
+        singleRun: true
       },
       travis: {
-        browsers: ['Firefox'],
-        singleRun: true
+        browsers: ['PhantomJS']
       },
-      single: {
-        browsers: ['Chrome'],
-        singleRun: true
+      local: {
+        browsers: ['Chrome']
       },
       dev: {
-        reporters: 'dots'
+        singleRun: false
       }
     },
     builddir: 'build',
@@ -82,6 +74,6 @@ module.exports = function(grunt) {
     grunt.task.run(['concat', 'uglify']);
   });
 
-  grunt.registerTask('travis', ['testacular:travis', 'build']);
-  grunt.registerTask('default', ['testacular:single', 'build']);
+  grunt.registerTask('travis', ['karma:travis', 'build']);
+  grunt.registerTask('default', ['karma:local', 'build']);
 };

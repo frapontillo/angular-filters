@@ -1,2 +1,2 @@
-angular.module('ex.filters', []);
-angular.module('ex', ['ex.filters']);
+angular.module('frapontillo.ex.filters', []);
+angular.module('frapontillo', ['ex.filters']);

@@ -1,7 +1,7 @@
 describe('min', function () {
   var minFilter;
 
-  beforeEach(module('ex.filters'));
+  beforeEach(module('frapontillo.ex.filters'));
   beforeEach(inject(function ($filter) {
     minFilter = $filter('min');
   }));

@@ -1,10 +1,12 @@
  language: node_js
  node_js:
-   - "0.8.11"
+   - "0.10.15"
 
  before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - npm install -g grunt-cli@0.1.x testacular@0.6.x
+  - npm install -g grunt-cli karma bower
+  - npm install
+  - bower install
 
  script: "grunt travis"

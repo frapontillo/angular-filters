@@ -4,28 +4,44 @@
   },
   "name": "angular-filters",
   "description": "A collection of filters for AngularJS.",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "homepage": "https://github.com/frapontillo/angular-filters",
   "repository": {
     "type": "git",
     "url": "git://github.com/frapontillo/angular-filters.git"
+  },
+  "author": {
+    "name" : "Francesco Pontillo",
+    "email" : "francescopontillo@gmail.com",
+    "url" : "https://github.com/frapontillo"
   },
   "keywords": [
     "angularjs",
     "angular",
     "filter"
   ],
+  "bugs": {
+    "url" : "https://github.com/frapontillo/angular-filters/issues"
+  },
   "license": "MIT",
   "readmeFilename": "README.md",
   "engines": {
-    "node": ">= 0.8.11"
+    "node": ">= 0.10.15"
   },
   "dependencies": {},
   "devDependencies": {
-    "testacular": "~0.6.0",
-    "grunt-contrib-concat": "~0.1.3",
     "grunt": "~0.4.0",
+    "grunt-contrib-concat": "~0.1.3",
     "grunt-contrib-uglify": "~0.1.1",
-    "gruntacular": "~0.2.1"
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-script-launcher": "~0.1.0",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-requirejs": "~0.1.0",
+    "karma-jasmine": "~0.1.3",
+    "karma-coffee-preprocessor": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma": "~0.10.2",
+    "grunt-karma": "~0.6.2"
   }
 }

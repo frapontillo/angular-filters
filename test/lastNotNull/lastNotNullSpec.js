@@ -1,7 +1,7 @@
 describe('lastNotNull', function () {
   var lastNotNullFilter;
 
-  beforeEach(module('ex.filters'));
+  beforeEach(module('frapontillo.ex.filters'));
   beforeEach(inject(function ($filter) {
     lastNotNullFilter = $filter('lastNotNull');
   }));
