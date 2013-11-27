@@ -1,6 +1,6 @@
 /**
  * A collection of filters for AngularJS.
- * @version v0.0.2 - 2013-08-27
+ * @version v1.0.0 - 2013-11-27
  * @author Francesco Pontillo
  * @link https://github.com/frapontillo/angular-filters
  * @license MIT License, http://www.opensource.org/licenses/MIT
@@ -25,6 +25,39 @@ angular.module('frapontillo.ex.filters')
     }
   }
 );
+/**
+ * defualts out an array to the minimum size specified.
+ * if variable is undefined it is initialised as an array
+ * sets the length to the count specified & initialised any new / null elements to an object
+ */
+
+/*globals angular, console*/
+angular.module('frapontillo.ex.filters')
+    .filter('ensure', function () {
+        'use strict';
+
+        return function (data, minCount) {
+            if (!angular.isArray(data)) {
+                return;
+            }
+
+            // < undefined will eval to false
+            if (data.length < minCount) {
+                data.length = minCount;
+            }
+
+            var i, item;
+            for (i = 0; i < data.length; i++) {
+                item = data[i];
+                if (typeof (item) === 'undefined' || item === null) {
+                    data[i] = {};
+                }
+            }
+
+            return data;
+        };
+    });
+
 angular.module('frapontillo.ex.filters')
   .filter('firstNotNull', function() {
     return function(input) {
