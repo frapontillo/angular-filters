@@ -137,9 +137,10 @@ These are the available grunt task:
 * `karma:dev`, run karma tests indefinitely after every file change, on Chrome
 * `jshint:src`, run jshint on every source file
 * `jshint:test`, run jshint on every test file
-* `clean`, clean the distribution directory
-* `ngmin`, prepares every angular file for minification by concatenating them in the `dist` directory
-* `concat`, concatenates the module declaration and the `ngmin`-ified file into the `dist` directory, adding the banner
+* `clean:dist`, clean the distribution directory
+* `clean:temp`, clean the temporary directory
+* `ngmin`, prepares every angular file into the `dist/.temp` directory
+* `concat`, concatenates the module declaration and the `ngmin`-ified file from the `dist/.temp` into the `dist` directory, adding the banner
 * `uglify`, minifies the output file in the `dist` directory, adding the banner
 * `build`, builds the regular and minified file
 

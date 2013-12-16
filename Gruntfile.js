@@ -62,20 +62,29 @@ module.exports = function(grunt) {
             '!<%= yeoman.dist %>/.git*'
           ]
         }]
+      },
+      temp: {
+        src: ['<%= yeoman.dist %>/.temp']
       }
     },
     ngmin: {
       dist: {
-        src: ['<%= yeoman.src %>/**/*.js'],
-        dest: '<%= yeoman.dist %>/<%= pkg.name %>.js'
+        expand: true,
+        cwd: '<%= yeoman.src %>',
+        src: ['**/*.js'],
+        dest: '<%= yeoman.dist %>/.temp'
       }
     },
     concat: {
       options: {
-        banner: '<%= meta.banner %>'
+        banner: '<%= meta.banner %>\'use strict\';\n',
+        process: function(src, filepath) {
+          return '// Source: ' + filepath + '\n' +
+            src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+        }
       },
       build: {
-        src: ['common/*.js', '<%= yeoman.dist %>/<%= pkg.name %>.js'],
+        src: ['common/*.js', '<%= yeoman.dist %>/.temp/**/*.js'],
         dest: '<%= yeoman.dist %>/<%= pkg.name %>.js'
       }
     },
@@ -90,7 +99,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('build', ['clean:dist', 'ngmin', 'concat', 'uglify']);
+  grunt.registerTask('build', ['clean', 'ngmin', 'concat', 'uglify', 'clean:temp']);
   grunt.registerTask('travis', ['karma:travis', 'build']);
   grunt.registerTask('default', ['karma:travis', 'build']);
 

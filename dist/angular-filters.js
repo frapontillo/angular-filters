@@ -6,14 +6,17 @@
  * @license MIT License, http://www.opensource.org/licenses/MIT
  */
 
+'use strict';
+// Source: common/module.js
 angular.module('frapontillo.ex.filters', []);
 angular.module('frapontillo', ['ex.filters']);
-'use strict';
+// Source: dist/.temp/filters/bool/bool.js
 angular.module('frapontillo.ex.filters').filter('bool', function () {
   return function (input, valueTrue, valueFalse) {
     return input !== true ? valueFalse : valueTrue;
   };
-});'use strict';
+});
+// Source: dist/.temp/filters/default/default.js
 angular.module('frapontillo.ex.filters').filter('default', function () {
   return function (input, value) {
     if (input !== null && input !== undefined && (input !== '' || angular.isNumber(input))) {
@@ -21,7 +24,8 @@ angular.module('frapontillo.ex.filters').filter('default', function () {
     }
     return value || '';
   };
-});'use strict';
+});
+// Source: dist/.temp/filters/firstNotNull/firstNotNull.js
 angular.module('frapontillo.ex.filters').filter('firstNotNull', function () {
   return function (input) {
     if (input) {
@@ -33,7 +37,8 @@ angular.module('frapontillo.ex.filters').filter('firstNotNull', function () {
       }
     }
   };
-});'use strict';
+});
+// Source: dist/.temp/filters/lastNotNull/lastNotNull.js
 angular.module('frapontillo.ex.filters').filter('lastNotNull', function () {
   return function (input) {
     if (input) {
@@ -45,7 +50,8 @@ angular.module('frapontillo.ex.filters').filter('lastNotNull', function () {
       }
     }
   };
-});'use strict';
+});
+// Source: dist/.temp/filters/max/max.js
 angular.module('frapontillo.ex.filters').filter('max', function () {
   return function (input) {
     var out;
@@ -58,7 +64,8 @@ angular.module('frapontillo.ex.filters').filter('max', function () {
     }
     return out;
   };
-});'use strict';
+});
+// Source: dist/.temp/filters/min/min.js
 angular.module('frapontillo.ex.filters').filter('min', function () {
   return function (input) {
     var out;
