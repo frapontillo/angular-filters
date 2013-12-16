@@ -1,10 +1,17 @@
-#angular-filters [![Build Status](https://travis-ci.org/frapontillo/angular-filters.png?branch=master)](https://travis-ci.org/frapontillo/angular-filters)
+angular-filters [![Build Status](https://travis-ci.org/frapontillo/angular-filters.png?branch=master)](https://travis-ci.org/frapontillo/angular-filters)
+===============
 
 A collection of useful filters for [AngularJS](http://angularjs.org/).
 
-***
+You can install the latest version of `angular-filters` with `bower`:
 
-# Filters
+```bash
+$ bower install angular-filters
+```
+
+Then, simply include `./build/angular-filters.js` or `./build/angular-filters.min.js` in your Web app and inject the module `frapontillo.ex.filters` in your application.
+
+## Filters specs
 
 The included filters are:
 
@@ -15,21 +22,7 @@ The included filters are:
 - [`max`](#max)
 - [`min`](#min)
 
-# Install
-
-You can install the latest version of `angular-filters` with `bower`:
-
-```bash
-$ bower install angular-filters
-```
-
-You can also fetch the git repo or download a zip of the latest tag.
-
-Then, simply include `./build/angular-filters.js` or `./build/angular-filters.min.js` in your Web app and inject the module `frapontillo.ex.filters` in your application.
-
-# Filters specs
-
-## bool
+### bool
 
 The `bool` filter allows to **specify true and false values** to show depending on the input value. The second parameter will be returned if and only if the first parameter is `true`; the third parameter will be returned if and only if the first parameter is `false`.
 
@@ -45,7 +38,7 @@ Use it as follows:
 	$scope.returnValue = $filter('bool')($scope.someBoolValue, 'Candies!', 'No candies :(');
 ```
 
-## default
+### default
 
 The `default` filter allows to **specify a default fallback value** if an object is one of the following:
 
@@ -68,7 +61,7 @@ Use it as follows:
 		($filter('number')($scope.someValue, 2), 'No value is available.');
 ```
 
-## firstNotNull
+### firstNotNull
 
 The `firstNotNull` filter returns the **first element from an array** that is neither `null` or `undefined`. This means it returns all numbers and strings, even if empty. It returns `undefined` if all values aren't set or if the array is empty.
 
@@ -82,7 +75,7 @@ Use it as follows:
 	$scope.firstValue = $filter('firstNotNull')($scope.myValues);
 ```
 
-## lastNotNull
+### lastNotNull
 
 The `lastNotNull` filter returns the **last element from an array** that is neither `null` or `undefined`. This means it returns all numbers and strings, even if empty. It returns `undefined` if all values aren't set or if the array is empty.
 
@@ -96,7 +89,7 @@ Use it as follows:
 	$scope.firstValue = $filter('lastNotNull')($scope.myValues);
 ```
 
-## max
+### max
 
 The `max` filter returns the **maximum value from an array** that is neither `null` or `undefined`. It returns `undefined` if all values aren't set or if the array is empty.
 
@@ -110,7 +103,7 @@ Use it as follows:
 	$scope.maxValue = $filter('max')($scope.myValues);
 ```
 
-## min
+### min
 
 The `min` filter returns the **minimum value from an array** that is neither `null` or `undefined`. It returns `undefined` if all values aren't set or if the array is empty.
 
@@ -124,28 +117,9 @@ Use it as follows:
 	$scope.minValue = $filter('min')($scope.myValues);
 ```
 
-# History
+## Development
 
-## v1.0.0
-
-- Main module renamed to `frapontillo.ex.filters` in order to adhere with the [Angular Component Specification draft](https://github.com/PascalPrecht/angular-component-spec).
-- Added `bool` filter.
-- Upgraded bower information, node packages and Karma test runner.
-
-## v0.0.2
-
-- Added `firstNotNull`, `lastNotNull`, `max`, `min`.
-- Test set complete.
-- TravisCI is working.
-
-## v0.0.1
-
-- First release.
-- `default` filter is the only filter at the moment.
-- Unit testing with grunt, testacular and gruntacular configured.
-- `defaultSpec` test written.
-
-# How to test and build
+### Test and build
 
 To test and build the distribution files yourself, do the following:
 
@@ -156,32 +130,40 @@ bower install
 grunt
 ```
 
-To simply test, use the `karma:local` task. To build without testing first, use the `build` task.
+These are the available grunt task:
 
-If you want to test after every file change, use the `karma:dev` grunt task instead.
+* `karma:travis`, run karma tests once, on PhantomJS
+* `karma:local`, run karma tests once, on Chrome
+* `karma:dev`, run karma tests indefinitely after every file change, on Chrome
+* `jshint:src`, run jshint on every source file
+* `jshint:test`, run jshint on every test file
+* `clean:dist`, clean the distribution directory
+* `clean:temp`, clean the temporary directory
+* `ngmin`, prepares every angular file into the `dist/.temp` directory
+* `concat`, concatenates the module declaration and the `ngmin`-ified file from the `dist/.temp` into the `dist` directory, adding the banner
+* `uglify`, minifies the output file in the `dist` directory, adding the banner
+* `build`, builds the regular and minified file
 
-# License
+Use the default task by calling `grunt` to run tests on PhantomJS and builds the regular and minified file.
+
+### Contribute
+
+To contribute, please follow the generic [AngularJS Contributing Guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md), with the only exception to send the PR to the `develop` branch instead of `master`.
+
+## License
 
 ```
-The MIT License
+  Copyright 2013 Francesco Pontillo
 
-Copyright (c) 2013 Francesco Pontillo
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+    http://www.apache.org/licenses/LICENSE-2.0
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
 ```

@@ -1,19 +1,17 @@
-/*
- * gruntacular
- * https://github.com/OpenWebStack/gruntacular
- *
- * Copyright (c) 2013 Dave Geddes
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
+  // configurable paths
+  var yeomanConfig = {
+    src: 'src',
+    dist: 'dist',
+    test: 'test'
+  };
 
   grunt.initConfig({
+    yeoman: yeomanConfig,
     pkg: grunt.file.readJSON('package.json'),
     dev: {
       reporters: 'dots'
@@ -33,7 +31,21 @@ module.exports = function(grunt) {
         singleRun: false
       }
     },
-    builddir: 'build',
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      src: [
+        'Gruntfile.js',
+        '<%= yeoman.src %>/**/*.js'
+      ],
+      test: {
+        src: ['<%= yeoman.test %>/**/*.js'],
+        options: {
+          jshintrc: 'test/.jshintrc'
+        }
+      }
+    },
     meta: {
       banner: '/**\n' + ' * <%= pkg.description %>\n' +
         ' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -41,39 +53,54 @@ module.exports = function(grunt) {
         ' * @link <%= pkg.homepage %>\n' +
         ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' + ' */\n\n'
     },
+    clean: {
+      dist: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= yeoman.dist %>/*',
+            '!<%= yeoman.dist %>/.git*'
+          ]
+        }]
+      },
+      temp: {
+        src: ['<%= yeoman.dist %>/.temp']
+      }
+    },
+    ngmin: {
+      dist: {
+        expand: true,
+        cwd: '<%= yeoman.src %>',
+        src: ['**/*.js'],
+        dest: '<%= yeoman.dist %>/.temp'
+      }
+    },
     concat: {
+      options: {
+        banner: '<%= meta.banner %>\'use strict\';\n',
+        process: function(src, filepath) {
+          return '// Source: ' + filepath + '\n' +
+            src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+        }
+      },
+      build: {
+        src: ['common/*.js', '<%= yeoman.dist %>/.temp/**/*.js'],
+        dest: '<%= yeoman.dist %>/<%= pkg.name %>.js'
+      }
+    },
+    uglify: {
       options: {
         banner: '<%= meta.banner %>'
       },
       build: {
-        src: ['common/*.js', 'modules/*/*/*.js'],
-        dest: '<%= builddir %>/<%= pkg.name %>.js'
-      }
-    },
-    uglify: {
-      build: {
-        src: ['<%= builddir %>/<%= pkg.name %>.js'],
-        dest: '<%= builddir %>/<%= pkg.name %>.min.js'
+        src: ['<%= yeoman.dist %>/<%= pkg.name %>.js'],
+        dest: '<%= yeoman.dist %>/<%= pkg.name %>.min.js'
       }
     }
   });
 
-  grunt.registerTask('build', 'build all or some of the filters', function () {
-    var jsBuildFiles = grunt.config('concat.build.src');
-
-    if (this.args.length > 0) {
-      this.args.forEach(function(moduleName) {
-        var modulejs = grunt.file.expandFiles('modules/*/' + moduleName + '/*.js');
-        jsBuildFiles = jsBuildFiles.concat(modulejs);
-      });
-      grunt.config('concat.build.src', jsBuildFiles);
-    } else {
-      grunt.config('concat.build.src', jsBuildFiles.concat(['modules/*/*/*.js']));
-    }
-
-    grunt.task.run(['concat', 'uglify']);
-  });
-
+  grunt.registerTask('build', ['clean', 'ngmin', 'concat', 'uglify', 'clean:temp']);
   grunt.registerTask('travis', ['karma:travis', 'build']);
-  grunt.registerTask('default', ['karma:local', 'build']);
+  grunt.registerTask('default', ['karma:travis', 'build']);
+
 };

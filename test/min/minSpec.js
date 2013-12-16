@@ -1,3 +1,5 @@
+'use strict';
+
 describe('min', function () {
   var minFilter;
 
