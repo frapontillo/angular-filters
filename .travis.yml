@@ -9,4 +9,4 @@
   - npm install
   - bower install
 
- script: "grunt travis"
+ script: "grunt"

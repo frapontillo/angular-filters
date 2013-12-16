@@ -1,3 +1,5 @@
+'use strict';
+
 describe('lastNotNull', function () {
   var lastNotNullFilter;
 

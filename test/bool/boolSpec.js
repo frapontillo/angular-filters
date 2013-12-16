@@ -1,3 +1,5 @@
+'use strict';
+
 describe('bool', function () {
   var boolFilter;
 

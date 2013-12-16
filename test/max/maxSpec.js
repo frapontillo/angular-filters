@@ -1,3 +1,5 @@
+'use strict';
+
 describe('max', function () {
   var maxFilter;
 

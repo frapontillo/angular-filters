@@ -17,7 +17,7 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'common/module.js',
-      'modules/*/*/*.js',
+      'src/**/*.js',
       'test/*/*Spec.js'
     ],
 
