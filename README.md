@@ -146,6 +146,10 @@ These are the available grunt task:
 
 Use the default task by calling `grunt` to run tests on PhantomJS and builds the regular and minified file.
 
+### Contribute
+
+To contribute, please follow the generic [AngularJS Contributing Guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md), with the only exception to send the PR to the `develop` branch instead of `master`.
+
 ## License
 
 ```

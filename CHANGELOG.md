@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+#### v1.0.1
+
+- Improved tests and stability
+- Rewritten build process
+
 #### v1.0.0
 
 - Main module renamed to `frapontillo.ex.filters` in order to adhere with the [Angular Component Specification draft](https://github.com/PascalPrecht/angular-component-spec).
