@@ -1,10 +1,10 @@
 /**
  * A collection of filters for AngularJS.
- * @version v1.0.1 - 2013-12-16
+ * @version v1.0.1 - 2014-01-07
  * @author Francesco Pontillo
  * @link https://github.com/frapontillo/angular-filters
- * @license MIT License, http://www.opensource.org/licenses/MIT
- */
+ * @license Apache License 2.0
+**/
 
 'use strict';
 // Source: common/module.js
