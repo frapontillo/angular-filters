@@ -143,6 +143,7 @@ These are the available grunt task:
 * `concat`, concatenates the module declaration and the `ngmin`-ified file from the `dist/.temp` into the `dist` directory, adding the banner
 * `uglify`, minifies the output file in the `dist` directory, adding the banner
 * `build`, builds the regular and minified file
+* `test-travis`, runs `jshint` and `karma:travis`
 
 Use the default task by calling `grunt` to run tests on PhantomJS and builds the regular and minified file.
 
