@@ -21,6 +21,8 @@ The included filters are:
 - [`lastNotNull`](#lastnotnull)
 - [`max`](#max)
 - [`min`](#min)
+- [`property`](#property)
+- [`join`](#join)
 
 ### bool
 
@@ -115,6 +117,34 @@ Use it as follows:
 
 ```javascript
 	$scope.minValue = $filter('min')($scope.myValues);
+```
+
+### property
+
+The `property` filter returns an **array with only the specified property from the original objects**, not altering the `null` or `undefined` values.
+
+Use it as follows:
+
+```html
+	<p>{{ myObjects | property:'myText' }}</p>
+```
+
+```javascript
+	$scope.allTheTexts = $filter('property')($scope.myObjects, 'myText');
+```
+
+### join
+
+The `join` filter returns **the original array as a string, with its elements joined with the specified separator**, if any, otherwise defaulting to the comma `,`.
+
+Use it as follows:
+
+```html
+	<p>{{ myValues | join:', ' }}</p>
+```
+
+```javascript
+	$scope.joinedValues = $filter('join')($scope.myValues, ', ');
 ```
 
 ## Development
