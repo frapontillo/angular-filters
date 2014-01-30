@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+#### v1.1.0
+
+- Added `property` filter
+- Added `join` filter
+- Updated to angular 1.2.10
+
 #### v1.0.1
 
 - Improved tests and stability

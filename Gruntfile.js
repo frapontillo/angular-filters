@@ -51,7 +51,7 @@ module.exports = function(grunt) {
         ' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
         ' * @author <%= pkg.author.name %>\n' +
         ' * @link <%= pkg.homepage %>\n' +
-        ' * @license MIT License, http://www.opensource.org/licenses/MIT\n' + ' */\n\n'
+        ' * @license <%= _.pluck(pkg.licenses, "type").join(", ") %>\n**/\n\n'
     },
     clean: {
       dist: {
@@ -99,8 +99,11 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('test', ['jshint', 'karma:unit']);
+  grunt.registerTask('test-travis', ['jshint', 'karma:travis']);
+
   grunt.registerTask('build', ['clean', 'ngmin', 'concat', 'uglify', 'clean:temp']);
-  grunt.registerTask('travis', ['karma:travis', 'build']);
-  grunt.registerTask('default', ['karma:travis', 'build']);
+  grunt.registerTask('travis', ['test-travis', 'build']);
+  grunt.registerTask('default', ['test-travis', 'build']);
 
 };

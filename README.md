@@ -9,7 +9,7 @@ You can install the latest version of `angular-filters` with `bower`:
 $ bower install angular-filters
 ```
 
-Then, simply include `./build/angular-filters.js` or `./build/angular-filters.min.js` in your Web app and inject the module `frapontillo.ex.filters` in your application.
+Then, simply include `./dist/angular-filters.js` or `./dist/angular-filters.min.js` in your Web app and inject the module `frapontillo.ex.filters` in your application.
 
 ## Filters specs
 
@@ -21,6 +21,8 @@ The included filters are:
 - [`lastNotNull`](#lastnotnull)
 - [`max`](#max)
 - [`min`](#min)
+- [`property`](#property)
+- [`join`](#join)
 
 ### bool
 
@@ -117,6 +119,34 @@ Use it as follows:
 	$scope.minValue = $filter('min')($scope.myValues);
 ```
 
+### property
+
+The `property` filter returns an **array with only the specified property from the original objects**, not altering the `null` or `undefined` values.
+
+Use it as follows:
+
+```html
+	<p>{{ myObjects | property:'myText' }}</p>
+```
+
+```javascript
+	$scope.allTheTexts = $filter('property')($scope.myObjects, 'myText');
+```
+
+### join
+
+The `join` filter returns **the original array as a string, with its elements joined with the specified separator**, if any, otherwise defaulting to the comma `,`.
+
+Use it as follows:
+
+```html
+	<p>{{ myValues | join:', ' }}</p>
+```
+
+```javascript
+	$scope.joinedValues = $filter('join')($scope.myValues, ', ');
+```
+
 ## Development
 
 ### Test and build
@@ -143,6 +173,7 @@ These are the available grunt task:
 * `concat`, concatenates the module declaration and the `ngmin`-ified file from the `dist/.temp` into the `dist` directory, adding the banner
 * `uglify`, minifies the output file in the `dist` directory, adding the banner
 * `build`, builds the regular and minified file
+* `test-travis`, runs `jshint` and `karma:travis`
 
 Use the default task by calling `grunt` to run tests on PhantomJS and builds the regular and minified file.
 
@@ -153,7 +184,7 @@ To contribute, please follow the generic [AngularJS Contributing Guidelines](htt
 ## License
 
 ```
-  Copyright 2013 Francesco Pontillo
+  Copyright 2014 Francesco Pontillo
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.

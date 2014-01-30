@@ -6,7 +6,7 @@
   },
   "name": "angular-filters",
   "description": "A collection of filters for AngularJS.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "homepage": "https://github.com/frapontillo/angular-filters",
   "repository": {
     "type": "git",
@@ -20,7 +20,12 @@
   "bugs": {
     "url": "https://github.com/frapontillo/angular-filters/issues"
   },
-  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache License 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
   "readmeFilename": "README.md",
   "engines": {
     "node": ">= 0.10.15"
