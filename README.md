@@ -22,6 +22,7 @@ The included filters are:
 - [`max`](#max)
 - [`min`](#min)
 - [`property`](#property)
+- [`join`](#join)
 
 ### bool
 
@@ -130,6 +131,20 @@ Use it as follows:
 
 ```javascript
 	$scope.allTheTexts = $filter('property')($scope.myObjects, 'myText');
+```
+
+### join
+
+The `join` filter returns **the original array as a string, with its elements joined with the specified separator**, if any, otherwise defaulting to the comma `,`.
+
+Use it as follows:
+
+```html
+	<p>{{ myValues | join:', ' }}</p>
+```
+
+```javascript
+	$scope.joinedValues = $filter('join')($scope.myValues, ', ');
 ```
 
 ## Development
