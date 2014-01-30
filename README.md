@@ -184,7 +184,7 @@ To contribute, please follow the generic [AngularJS Contributing Guidelines](htt
 ## License
 
 ```
-  Copyright 2013 Francesco Pontillo
+  Copyright 2014 Francesco Pontillo
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
