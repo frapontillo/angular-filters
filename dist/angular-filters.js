@@ -1,6 +1,6 @@
 /**
  * A collection of filters for AngularJS.
- * @version v1.0.1 - 2014-01-07
+ * @version v1.1.0 - 2014-01-30
  * @author Francesco Pontillo
  * @link https://github.com/frapontillo/angular-filters
  * @license Apache License 2.0
@@ -36,6 +36,15 @@ angular.module('frapontillo.ex.filters').filter('firstNotNull', function () {
         }
       }
     }
+  };
+});
+// Source: dist/.temp/filters/join/join.js
+angular.module('frapontillo.ex.filters').filter('join', function () {
+  return function (array, separator) {
+    if (!array) {
+      return '';
+    }
+    return array.join(separator);
   };
 });
 // Source: dist/.temp/filters/lastNotNull/lastNotNull.js
@@ -77,5 +86,16 @@ angular.module('frapontillo.ex.filters').filter('min', function () {
       }
     }
     return out;
+  };
+});
+// Source: dist/.temp/filters/property/property.js
+angular.module('frapontillo.ex.filters').filter('property', function () {
+  return function (array, property) {
+    var newArray = [];
+    angular.forEach(array, function (element) {
+      var evalProperty = element[property];
+      newArray.push(evalProperty);
+    });
+    return newArray;
   };
 });

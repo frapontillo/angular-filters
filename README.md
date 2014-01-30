@@ -9,7 +9,7 @@ You can install the latest version of `angular-filters` with `bower`:
 $ bower install angular-filters
 ```
 
-Then, simply include `./build/angular-filters.js` or `./build/angular-filters.min.js` in your Web app and inject the module `frapontillo.ex.filters` in your application.
+Then, simply include `./dist/angular-filters.js` or `./dist/angular-filters.min.js` in your Web app and inject the module `frapontillo.ex.filters` in your application.
 
 ## Filters specs
 
