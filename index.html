@@ -1,0 +1,255 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Angular Filters by frapontillo</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Angular Filters</h1>
+        <p>A collection of useful filters for AngularJS.</p>
+
+        <p class="view"><a href="https://github.com/frapontillo/angular-filters">View the Project on GitHub <small>frapontillo/angular-filters</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/frapontillo/angular-filters/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/frapontillo/angular-filters/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/frapontillo/angular-filters">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>A collection of useful filters for <a href="http://angularjs.org/">AngularJS</a>.</p>
+
+<p>You can install the latest version of <code>angular-filters</code> with <code>bower</code>:</p>
+
+<div class="highlight highlight-bash"><pre><span class="nv">$ </span>bower install angular-filters
+</pre></div>
+
+<p>Then, simply include <code>./dist/angular-filters.js</code> or <code>./dist/angular-filters.min.js</code> in your Web app and inject the module <code>frapontillo.ex.filters</code> in your application.</p>
+
+<h2>
+<a name="filters-specs" class="anchor" href="#filters-specs"><span class="octicon octicon-link"></span></a>Filters specs</h2>
+
+<p>The included filters are:</p>
+
+<ul>
+<li><a href="#bool"><code>bool:trueValue:falseValue</code></a></li>
+<li><a href="#default"><code>default:defaultValue</code></a></li>
+<li><a href="#firstnotnull"><code>firstNotNull</code></a></li>
+<li><a href="#lastnotnull"><code>lastNotNull</code></a></li>
+<li><a href="#max"><code>max</code></a></li>
+<li><a href="#min"><code>min</code></a></li>
+<li><a href="#property"><code>property</code></a></li>
+<li><a href="#join"><code>join</code></a></li>
+</ul><h3>
+<a name="bool" class="anchor" href="#bool"><span class="octicon octicon-link"></span></a>bool</h3>
+
+<p>The <code>bool</code> filter allows to <strong>specify true and false values</strong> to show depending on the input value. The second parameter will be returned if and only if the first parameter is <code>true</code>; the third parameter will be returned if and only if the first parameter is <code>false</code>.</p>
+
+<p>This filter can be used to print a specific message depending on a boolean value.</p>
+
+<p>Use it as follows:</p>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;p&gt;</span>{{ someBoolValue | bool:'Candies!':'No candies :(' }}<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">returnValue</span> <span class="o">=</span> <span class="nx">$filter</span><span class="p">(</span><span class="s1">'bool'</span><span class="p">)(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">someBoolValue</span><span class="p">,</span> <span class="s1">'Candies!'</span><span class="p">,</span> <span class="s1">'No candies :('</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="default" class="anchor" href="#default"><span class="octicon octicon-link"></span></a>default</h3>
+
+<p>The <code>default</code> filter allows to <strong>specify a default fallback value</strong> if an object is one of the following:</p>
+
+<ul>
+<li><code>null</code></li>
+<li><code>undefined</code></li>
+<li>empty string, <code>''</code>
+</li>
+</ul><p>Please notice that if a value equals to <code>0</code>, the default value won't be returned, as <code>0</code> is accepted.</p>
+
+<p>This filter is useful when another filter return is not safe and when you want to display a fallback value.</p>
+
+<p>Use it as follows:</p>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;p&gt;</span>{{ someValue | number:2 | default:'No value is available.' }}<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">returnValue</span> <span class="o">=</span> <span class="nx">$filter</span><span class="p">(</span><span class="s1">'default'</span><span class="p">)</span>
+        <span class="p">(</span><span class="nx">$filter</span><span class="p">(</span><span class="s1">'number'</span><span class="p">)(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">someValue</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">'No value is available.'</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="firstnotnull" class="anchor" href="#firstnotnull"><span class="octicon octicon-link"></span></a>firstNotNull</h3>
+
+<p>The <code>firstNotNull</code> filter returns the <strong>first element from an array</strong> that is neither <code>null</code> or <code>undefined</code>. This means it returns all numbers and strings, even if empty. It returns <code>undefined</code> if all values aren't set or if the array is empty.</p>
+
+<p>Use it as follows:</p>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;p&gt;</span>{{ myValues | firstNotNull }}<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">firstValue</span> <span class="o">=</span> <span class="nx">$filter</span><span class="p">(</span><span class="s1">'firstNotNull'</span><span class="p">)(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">myValues</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="lastnotnull" class="anchor" href="#lastnotnull"><span class="octicon octicon-link"></span></a>lastNotNull</h3>
+
+<p>The <code>lastNotNull</code> filter returns the <strong>last element from an array</strong> that is neither <code>null</code> or <code>undefined</code>. This means it returns all numbers and strings, even if empty. It returns <code>undefined</code> if all values aren't set or if the array is empty.</p>
+
+<p>Use it as follows:</p>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;p&gt;</span>{{ myValues | lastNotNull }}<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">firstValue</span> <span class="o">=</span> <span class="nx">$filter</span><span class="p">(</span><span class="s1">'lastNotNull'</span><span class="p">)(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">myValues</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="max" class="anchor" href="#max"><span class="octicon octicon-link"></span></a>max</h3>
+
+<p>The <code>max</code> filter returns the <strong>maximum value from an array</strong> that is neither <code>null</code> or <code>undefined</code>. It returns <code>undefined</code> if all values aren't set or if the array is empty.</p>
+
+<p>Use it as follows:</p>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;p&gt;</span>{{ myValues | max }}<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">maxValue</span> <span class="o">=</span> <span class="nx">$filter</span><span class="p">(</span><span class="s1">'max'</span><span class="p">)(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">myValues</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="min" class="anchor" href="#min"><span class="octicon octicon-link"></span></a>min</h3>
+
+<p>The <code>min</code> filter returns the <strong>minimum value from an array</strong> that is neither <code>null</code> or <code>undefined</code>. It returns <code>undefined</code> if all values aren't set or if the array is empty.</p>
+
+<p>Use it as follows:</p>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;p&gt;</span>{{ myValues | min }}<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">minValue</span> <span class="o">=</span> <span class="nx">$filter</span><span class="p">(</span><span class="s1">'min'</span><span class="p">)(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">myValues</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="property" class="anchor" href="#property"><span class="octicon octicon-link"></span></a>property</h3>
+
+<p>The <code>property</code> filter returns an <strong>array with only the specified property from the original objects</strong>, not altering the <code>null</code> or <code>undefined</code> values.</p>
+
+<p>Use it as follows:</p>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;p&gt;</span>{{ myObjects | property:'myText' }}<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">allTheTexts</span> <span class="o">=</span> <span class="nx">$filter</span><span class="p">(</span><span class="s1">'property'</span><span class="p">)(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">myObjects</span><span class="p">,</span> <span class="s1">'myText'</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="join" class="anchor" href="#join"><span class="octicon octicon-link"></span></a>join</h3>
+
+<p>The <code>join</code> filter returns <strong>the original array as a string, with its elements joined with the specified separator</strong>, if any, otherwise defaulting to the comma <code>,</code>.</p>
+
+<p>Use it as follows:</p>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;p&gt;</span>{{ myValues | join:', ' }}<span class="nt">&lt;/p&gt;</span>
+</pre></div>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">$scope</span><span class="p">.</span><span class="nx">joinedValues</span> <span class="o">=</span> <span class="nx">$filter</span><span class="p">(</span><span class="s1">'join'</span><span class="p">)(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">myValues</span><span class="p">,</span> <span class="s1">', '</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="development" class="anchor" href="#development"><span class="octicon octicon-link"></span></a>Development</h2>
+
+<h3>
+<a name="test-and-build" class="anchor" href="#test-and-build"><span class="octicon octicon-link"></span></a>Test and build</h3>
+
+<p>To test and build the distribution files yourself, do the following:</p>
+
+<pre lang="shell"><code>npm install -g grunt-cli karma bower
+npm install
+bower install
+grunt
+</code></pre>
+
+<p>These are the available grunt task:</p>
+
+<ul>
+<li>
+<code>karma:travis</code>, run karma tests once, on PhantomJS</li>
+<li>
+<code>karma:local</code>, run karma tests once, on Chrome</li>
+<li>
+<code>karma:dev</code>, run karma tests indefinitely after every file change, on Chrome</li>
+<li>
+<code>jshint:src</code>, run jshint on every source file</li>
+<li>
+<code>jshint:test</code>, run jshint on every test file</li>
+<li>
+<code>clean:dist</code>, clean the distribution directory</li>
+<li>
+<code>clean:temp</code>, clean the temporary directory</li>
+<li>
+<code>ngmin</code>, prepares every angular file into the <code>dist/.temp</code> directory</li>
+<li>
+<code>concat</code>, concatenates the module declaration and the <code>ngmin</code>-ified file from the <code>dist/.temp</code> into the <code>dist</code> directory, adding the banner</li>
+<li>
+<code>uglify</code>, minifies the output file in the <code>dist</code> directory, adding the banner</li>
+<li>
+<code>build</code>, builds the regular and minified file</li>
+<li>
+<code>test-travis</code>, runs <code>jshint</code> and <code>karma:travis</code>
+</li>
+</ul><p>Use the default task by calling <code>grunt</code> to run tests on PhantomJS and builds the regular and minified file.</p>
+
+<h3>
+<a name="contribute" class="anchor" href="#contribute"><span class="octicon octicon-link"></span></a>Contribute</h3>
+
+<p>To contribute, please follow the generic <a href="https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md">AngularJS Contributing Guidelines</a>, with the only exception to send the PR to the <code>develop</code> branch instead of <code>master</code>.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<pre><code>  Copyright 2014 Francesco Pontillo
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/frapontillo">frapontillo</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-49037569-4");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
