@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git://github.com/frapontillo/angular-filters.git"
   },
-  "main": "./dist/angular-filters.min.js",
+  "main": "./dist/angular-filters.js",
   "dependencies": {
     "angular": "~1.2.15"
   },
