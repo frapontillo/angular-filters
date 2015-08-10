@@ -1,5 +1,10 @@
-angular-filters [![Build Status](https://travis-ci.org/frapontillo/angular-filters.png?branch=master)](https://travis-ci.org/frapontillo/angular-filters)
+angular-filters
 ===============
+
+[![Bower version][bower-version-image]][bower-url]
+[![NPM version][npm-version-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Apache License][license-image]][license-url]
 
 A collection of useful filters for [AngularJS](http://angularjs.org/).
 
@@ -199,3 +204,15 @@ To contribute, please follow the generic [AngularJS Contributing Guidelines](htt
   See the License for the specific language governing permissions and
   limitations under the License.
 ```
+
+[license-image]: http://img.shields.io/badge/license-Apache_2.0-blue.svg?style=flat
+[license-url]: LICENSE
+
+[bower-version-image]: http://img.shields.io/bower/v/angular-filters.svg?style=flat
+[bower-url]: http://bower.io/search/?q=angular-filters
+
+[npm-url]: https://npmjs.org/package/angular-filters
+[npm-version-image]: http://img.shields.io/npm/v/angular-filters.svg?style=flat
+
+[travis-image]: http://img.shields.io/travis/frapontillo/angular-filters/develop.svg?style=flat
+[travis-url]: https://travis-ci.org/frapontillo/angular-filters

@@ -1,0 +1,14 @@
+.git/
+.idea/
+.tmp/
+bower_components/
+common/
+src/
+test/
+node_modules/
+.gitignore
+.jshintrc
+.travis.yml
+karma.conf.js
+Gruntfile.js
+bower.json
